@@ -31,4 +31,17 @@ public class BoardService {
 		log.info("boardServie: addBoard(Board board)");
 		boardMapper.insertBoard(board);
 	}
+	
+	public boolean isPassCheck(int no, String pass) {
+		log.info("BoardService: isPassCheck(int no, String pass)");
+		boolean result = false;
+		
+		String dbPass = boardMapper.isPassCheck(no);
+		
+		if(dbPass.equals(pass)) {
+			result = true;
+		}
+		return result;
+	}
+	
 }

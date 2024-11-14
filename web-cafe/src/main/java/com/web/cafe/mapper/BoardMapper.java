@@ -15,4 +15,7 @@ public interface BoardMapper {
 	public void insertBoard(Board board);
 	
 	public Board getBoard(int no);
+	
+	public String isPassCheck(int no);
+	
 }

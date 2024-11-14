@@ -35,4 +35,10 @@
 		WHERE no = #{no}	
 	</select>
 	
+	<select id="isPassCheck">
+		SELECT
+		pass
+		FROM springbbs
+		WHERE no = #{no}
+	</select>
 </mapper>
