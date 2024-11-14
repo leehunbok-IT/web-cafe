@@ -57,6 +57,10 @@ $(function() {
 		}
 	});
 	
+	$("detailDelete").on("click", function(){
+		
+	});
+	
 });
 
 

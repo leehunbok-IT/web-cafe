@@ -67,6 +67,7 @@ public class BoardController {
 		return "views/updateForm";
 	}
 	
+	@PostMapping("/update")
 	public String updateBoard(Board board, 
 			HttpServletResponse rs, PrintWriter out) {
 		
