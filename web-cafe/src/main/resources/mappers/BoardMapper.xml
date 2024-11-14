@@ -41,4 +41,21 @@
 		FROM springbbs
 		WHERE no = #{no}
 	</select>
+	
+	<update id="updateBoard" parameterType="Board">
+		UPDATE springbbs
+			SET title  = #{title}, content = #{content},
+				reg_date = SYSDATE()
+		WHERE no = #{no}
+	</update>	
+	
 </mapper>
+
+
+
+
+
+
+
+
+

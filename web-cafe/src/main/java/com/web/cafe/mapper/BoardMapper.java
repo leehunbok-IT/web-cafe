@@ -18,4 +18,5 @@ public interface BoardMapper {
 	
 	public String isPassCheck(int no);
 	
+	public void updateBoard(Board board);
 }

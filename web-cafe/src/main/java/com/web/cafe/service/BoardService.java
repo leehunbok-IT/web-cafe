@@ -44,4 +44,9 @@ public class BoardService {
 		return result;
 	}
 	
+	public void updateBoard(Board board) {
+		log.info("BoardService: updateBoard(Board board)");
+		boardMapper.updateBoard(board);
+	}
+	
 }

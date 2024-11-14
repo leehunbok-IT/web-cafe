@@ -1,5 +1,7 @@
 package com.web.cafe.controller;
 
+
+
 import java.io.PrintWriter;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,7 @@ public class BoardController {
 		boardService.addBoard(board);
 		return "redirect:boardList";
 	}
+	
 	@PostMapping("/updateForm")
 	public String updateBoard(Model model, HttpServletResponse rs, PrintWriter out,
 			@RequestParam("no") int no, @RequestParam("pass") String pass) {
@@ -64,4 +67,21 @@ public class BoardController {
 		return "views/updateForm";
 	}
 	
+	public String updateBoard(Board board, 
+			HttpServletResponse rs, PrintWriter out) {
+		
+		boolean isPassCheck = boardService.isPassCheck(board.getNo(), board.getPass());
+		if(! isPassCheck) {
+			rs.setContentType("text/html; charset=utf-8");
+			out.println("<script>");
+			out.println("alert('비밀번호가 맞지 않습니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			
+			return null;
+		}
+		boardService.updateBoard(board);
+		return "redirect:boardList";
+		
+	}
 }

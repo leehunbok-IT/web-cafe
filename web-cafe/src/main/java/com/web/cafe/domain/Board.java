@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+
 @Getter
 @Setter
 @NoArgsConstructor //기본생성자 자동으로 만들어줌
