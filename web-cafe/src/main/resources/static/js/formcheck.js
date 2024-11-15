@@ -57,8 +57,17 @@ $(function() {
 		}
 	});
 	
-	$("detailDelete").on("click", function(){
+	$("#detailDelete").on("click", function(){
 		
+		let pass = $("#pass").val();
+		if(pass.length <= 0){
+			alert("게시글을 삭제하려면 비밀번호를 입력해주세요.");
+			return false;
+		}
+		$("#rPass").val(pass);
+		$("#checkForm").attr("action", "delete");
+		$("#checkForm").attr("method", "post");
+		$("#checkForm").submit();
 	});
 	
 });

@@ -59,7 +59,7 @@ main_layout.html에서 지정한 layout:fragment의 이름과 같아야 한다.
 							<th:block th:if="${not #lists.isEmpty(bList)}">
 								<tr th:block th:each="board, status: ${bList}">
 									<td>[[ ${board.no} ]]</td>
-									<td><a th:href="@{boardDetail(no=${board.no})}"
+									<td><a th:href="@{boardDetail(no=${board.no}, pageNum=${currentPage})}"
 									class ="text-dark text-decoration-none">[[ ${board.title} ]]</a></td>
 									<td th:text="${ board.writer }"></td>
 									<td>[[${ #dates.format(board.regDate, 'yyyy-MM-dd') }]]</td>
@@ -72,8 +72,30 @@ main_layout.html에서 지정한 layout:fragment의 이름과 같아야 한다.
 								</tr>
 							</th:block>
 						</tbody>
-
 					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<nav aria-label="Page navigation">
+						<ul class="pagination justify-content-center">
+							<li class="page-item" th:if="${startPage > pageGroup}">
+								<a class="page-link" th:href="@{|?pageNum=${startPage - 1}|}">Pre</a>
+							</li>
+							<li th:each="num : ${#numbers.sequence(startPage, endPage)}" 
+							th:classappend="${num == currentPage} ? 'active'"
+							class="page-item" aria-current="page">
+							<th:block th:if="${num != currentPage}">
+							<a th:text="${num}" th:href="@{|?pageNum=${num}|}" class="page-link"></a>
+							</th:block>
+							<th:block th:if="${num == currentPage}">
+								<span th:text="${num}" class="page-link"></span>
+							</li>
+							<li class="page-item" th:if="${endPage < pageCount}">
+								<a class="page-link" th:href="@{|?pageNum=${startPage + pageGroup}|}">Next</a>
+							</li>
+						</ul>
+					</nav>
 				</div>
 			</div>
 		</div>
